@@ -1,0 +1,11 @@
+<mvc:View 
+    controllerName="etiqueta.ubicacion.controller.NotFound"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
+
+    <Page id="NotFound_Page_01" showHeader="true" title="{i18n>mainview.title}">
+        <IllustratedMessage id="NotFound_IllustratedMessage_01" illustrationType="sapIllus-UnableToLoad" />
+    </Page>
+
+</mvc:View>

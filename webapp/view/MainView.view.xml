@@ -1,0 +1,75 @@
+<mvc:View 
+    controllerName="etiqueta.ubicacion.controller.MainView"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" 
+    displayBlock="true">
+    
+    <Page id="MainView_Page_01" class= "sapUiResponsivePadding" showFooter="true" title="{i18n>mainview.paneltitle}" floatingFooter="true">
+        <content>
+            <Panel id="MainView_Panel_01" class="sapUiResponsiveMargin" backgroundDesign="Transparent">
+                <content>
+                    <form:SimpleForm id="MainView_SimpleForm_01" backgroundDesign="Transparent"
+                    editable="true" layout="ResponsiveGridLayout"
+                    labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+                    emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+                    columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                        <form:content>
+                            <Label id="MainView_Label_01" text="{i18n>mainview.location}"/>
+                             <Input id="MainView_Input_01" textFormatMode="ValueKey" placeholder="{i18n>mainview.placeholder1}"
+                                showSuggestion="true" showTableSuggestionValueHelp="false" suggestionRows="{LocalModel>/Locations}"
+                                suggestionItemSelected="onSuggestionItemSelected" required="true" change="onChangeLocation">
+                            <suggestionColumns>
+                                <Column id="MainView_Column_01">
+                                    <Label id="MainView_Label_02" text="{i18n>mainview.warehousenumber}" wrapping="true"/>
+                                </Column>
+                                <Column id="MainView_Column_02">
+                                    <Label id="MainView_Label_03" text="{i18n>mainview.storageBin}" />
+                                </Column>
+                                <Column id="MainView_Column_03">
+                                    <Label id="MainView_Label_04" text="{i18n>mainview.storagetype}" />
+                                </Column>
+                            </suggestionColumns>
+                            <suggestionRows>
+                                <ColumnListItem id="MainView_ColumnListItem_01">
+                                    <Text id="MainView_Text_02" text="{LocalModel>Lgnum}" />
+                                    <Text id="MainView_Text_03"  text="{LocalModel>Lgpla}" />
+                                    <Text id="MainView_Text_04"  text="{LocalModel>Lgtyp}" />
+                                </ColumnListItem>
+                            </suggestionRows>
+                        </Input> 
+                        </form:content>
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+            <Panel id="MainView_Panel_02" class="sapUiResponsiveMargin" backgroundDesign="Transparent" headerText="{i18n>mainview.paneltitle2}">
+                <content>
+                    <form:SimpleForm id="MainView_SimpleForm_02" backgroundDesign="Transparent"
+                    editable="true" layout="ResponsiveGridLayout"
+                    labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+                    emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+                    columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                        <form:content>
+                            <Label id="MainView_Label_05" text="{i18n>mainview.warehousenumber}"/>
+                            <Text id="MainView_Text_05"/>
+                            <Label id="MainView_Label_06" text="{i18n>mainview.storageBin}"/>
+                            <Text id="MainView_Text_06"/>
+                            <Label id="MainView_Label_07" text="{i18n>mainview.storagetype}"/>
+                            <Text id="MainView_Text_07"/>
+                        </form:content>
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+        </content>
+        <footer>
+            <OverflowToolbar id="MainView_OverflowToolbar_01">
+                <ToolbarSpacer id="MainView_ToolbarSpacer_01"/>
+                <Button id="MainView_Button_01" text="{i18n>mainview.printZebra}" type="Accept" icon="sap-icon://print" press="onPrintLabelZebra"/>
+                <Button id="MainView_Button_02" text="{i18n>mainview.printpdf}" type="Accept" icon="sap-icon://print" press="onPrintLabel"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+
+</mvc:View>

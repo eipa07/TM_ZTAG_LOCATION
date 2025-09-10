@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: etiqueta.ubicacion
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: DS4DEV
+          url: http://vvhsvfds4ci.sap.cuprum.com:44300
+          client: '110'
+        app:
+          name: ZTAG_LOCATION
+          description: BSP App Tag location
+          package: Z_FIORI_ETIQUETAS
+          transport: DS4K918868
+        exclude:
+          - /test/

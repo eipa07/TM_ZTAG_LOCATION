@@ -1,0 +1,148 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "etiqueta.ubicacion",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.16.3",
+            "toolsId": "469b7210-c4f2-44ad-b08e-2c1b98ff8b72"
+        },
+        "dataSources": {
+            "ZSB_LOC_LL": {
+                "uri": "/sap/opu/odata/sap/ZSB_LOC_LL/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZSB_LOC_LL_VAN"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSB_LOC_LL_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_LOC_LL_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZSB_LOC_LL_VAN.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.108.36",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "etiqueta.ubicacion.i18n.i18n"
+                }
+            },
+            "ZSB_LOC_LL": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "dataSource": "ZSB_LOC_LL",
+                "preload": true,
+                "settings": {
+                    "defaulOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request",
+                    "refreshAfterChange": false,
+                    "useBatch": false,
+                    "defaultUpdateMethod": "Put"
+                }
+            },
+            "LocalModel": {
+              "type": "sap.ui.model.json.JSONModel"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "etiqueta.ubicacion.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMainView",
+                    "pattern": "",
+                    "target": [
+                        "TargetMainView"
+                    ]
+                },
+                {
+                  "name": "RouteNotFound",
+                  "pattern": "NotFound",
+                  "target": [
+                    "TargetNotFound"
+                  ]
+                }
+            ],
+            "targets": {
+                "TargetMainView": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MainView",
+                    "viewName": "MainView"
+                },
+                "TargetNotFound": {
+                  "viewType": "XML",
+                  "transition": "slide",
+                  "viewId": "NotFound",
+                  "viewName": "NotFound"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "etiqueta.ubicacion.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}
