@@ -18,7 +18,7 @@
                     columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                         <form:content>
                             <Label id="MainView_Label_01" text="{i18n>mainview.location}"/>
-                             <Input id="MainView_Input_01" textFormatMode="ValueKey" placeholder="{i18n>mainview.placeholder1}"
+                             <!-- <Input id="MainView_Input_01" textFormatMode="ValueKey" placeholder="{i18n>mainview.placeholder1}"
                                 showSuggestion="true" showTableSuggestionValueHelp="false" suggestionRows="{LocalModel>/Locations}"
                                 suggestionItemSelected="onSuggestionItemSelected" required="true" change="onChangeLocation">
                             <suggestionColumns>
@@ -39,7 +39,37 @@
                                     <Text id="MainView_Text_04"  text="{LocalModel>Lgtyp}" />
                                 </ColumnListItem>
                             </suggestionRows>
-                        </Input> 
+                        </Input>  -->
+
+                     <Input
+  id="MainView_Input_01"
+  showSuggestion="true"
+  startSuggestion="2"
+  filterSuggests="false"
+  suggest=".onSuggest"
+  suggestionRows="{
+    path: 'ZSB_LOC_LL>/ZZ1_CDS_STORAGE_BINS',
+    parameters: { $select: 'Lgnum,Lgpla,Lgtyp', $top: 50 }
+  }"
+  suggestionItemSelected=".onSuggestionItemSelected"
+>
+  <suggestionColumns>
+    <Column><Label text="{i18n>mainview.warehousenumber}" /></Column>
+    <Column><Label text="{i18n>mainview.storageBin}" /></Column>
+    <Column><Label text="{i18n>mainview.storagetype}" /></Column>
+  </suggestionColumns>
+  <suggestionRows>
+    <ColumnListItem>
+      <Text text="{ZSB_LOC_LL>Lgnum}" />
+      <Text text="{ZSB_LOC_LL>Lgpla}" />
+      <Text text="{ZSB_LOC_LL>Lgtyp}" />
+    </ColumnListItem>
+  </suggestionRows>
+</Input>
+
+
+
+
                         </form:content>
                     </form:SimpleForm>
                 </content>
